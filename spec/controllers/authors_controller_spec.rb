@@ -33,6 +33,7 @@ RSpec.describe AuthorsController, :type => :controller do
 
       it "redirects to the author show action" do
         post :create, author: Fabricate.attributes_for(:author)
+        require 'pry'; binding.pry
         expect(response).to redirect_to author_path(Author.first)
 
       end
