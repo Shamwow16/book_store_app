@@ -1,10 +1,12 @@
 class AuthorsController < ApplicationController
+
+  before_action :set_author, except: [:index, :new, :create]
+
   def index
   end
 
   def show
     #require 'pry'; binding.pry
-    @author = Author.find(params[:id])
   end
 
   def new
@@ -24,12 +26,10 @@ class AuthorsController < ApplicationController
   end
 
   def edit
-    @author = Author.find(params[:id])
 
   end
 
   def update
-    @author = Author.find(params[:id])
     if @author.update(author_params)
       flash[:success] = "Author has been updated"
       redirect_to @author
@@ -40,8 +40,21 @@ class AuthorsController < ApplicationController
 
   end
 
+  def destroy
+    if @author.destroy
+      flash[:success] = "Author has been deleted"
+      redirect_to authors_path
+    end
+    #require 'pry'; binding.pry
+
+  end
+
   private
   def author_params
     params.require(:author).permit(:first_name, :last_name)
+  end
+
+  def set_author
+    @author = Author.find(params[:id])
   end
 end
