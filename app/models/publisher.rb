@@ -1,10 +1,13 @@
 class Publisher < ActiveRecord::Base
   has_many :books
-  validates :name, presence: true
-  validates :name, uniqueness: {case_sensitive: false}
-
+  has_many :publications
   belongs_to :author
   belongs_to :book
 
-  has_many :publications
+  validates :name, presence: true
+  validates :name, uniqueness: {case_sensitive: false}
+
+
+
+
 end
