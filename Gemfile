@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use sqlite3 as the database for Active Record
@@ -22,7 +21,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'bootstrap-sass','~> 3.3.4.1'
+gem 'bootstrap-sass', '~> 3.3.4.1'
 gem 'bootstrap_form'
 
 gem 'jquery-ui-rails', '5.0.5'
@@ -43,17 +42,16 @@ gem 'figaro'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rubocop'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
 
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'rspec-rails','3.2.3'
+  gem 'rspec-rails', '3.2.3'
   gem 'spring-commands-rspec'
   gem 'guard-rspec', require: false
   gem 'fabrication'
-
 end
 
 group :development do
@@ -61,7 +59,7 @@ group :development do
 end
 
 group :test do
-  gem 'capybara','2.4.4'
+  gem 'capybara', '2.4.4'
   gem 'faker'
   gem 'shoulda-matchers', require: false
 end
