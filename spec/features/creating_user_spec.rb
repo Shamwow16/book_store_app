@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-RSpec.feature "Creating users"do
-  scenario "with valid credentials" do
+RSpec.feature 'Creating users' do
+  scenario 'with valid credentials' do
     visit root_path
-
     click_link 'Sign up'
     fill_in 'First name', with: 'John'
     fill_in 'Last name', with: 'Doe'
@@ -15,7 +14,7 @@ RSpec.feature "Creating users"do
     expect(page).to have_content('User has been created')
   end
 
-  scenario "with invalid credentials" do
+  scenario 'with invalid credentials' do
     visit root_path
 
     click_link 'Sign up'
@@ -28,6 +27,4 @@ RSpec.feature "Creating users"do
 
     expect(page).to have_content('User has not been created')
   end
-
-
 end

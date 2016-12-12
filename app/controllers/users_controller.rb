@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  before_action :set_user, except: [:new, :create]
+  before_action :set_user, except: [:index, :new, :create]
+
+  def index
+    @users = User.all
+  end
+
   def show
     @user = User.find(params[:id])
   end
