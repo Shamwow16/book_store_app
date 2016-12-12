@@ -6,6 +6,6 @@ RSpec.feature 'Seeding Data' do
     require 'pry'; visit root_path
     click_link 'Authors'
 
-    expect(page).to have_content('Sydneey')
+    expect(page).to have_content('Sydney')
   end
 end
