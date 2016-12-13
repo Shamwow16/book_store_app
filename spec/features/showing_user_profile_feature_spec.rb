@@ -6,7 +6,6 @@ RSpec.feature 'Showing user profile' do
 
   scenario do
     visit root_path
-    binding.pry
     click_link 'Users'
     print page.html
 
