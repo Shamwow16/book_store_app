@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   end
 
   def self.authenticate(email, password)
-    binding.pry
     user = User.find_by(email: email)
     user && user.authenticate(password)
   end
