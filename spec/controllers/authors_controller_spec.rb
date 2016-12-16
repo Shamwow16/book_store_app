@@ -52,7 +52,7 @@ RSpec.describe AuthorsController, :type => :controller do
 
       it "sets the failure flash message" do
         post :create, author: Fabricate.attributes_for(:author, first_name: nil)
-        expect(flash[:danger]).to eq("Author has not been created")
+        expect(flash.now[:danger]).to eq("Author has not been created")
       end
     end
   end
@@ -94,7 +94,7 @@ RSpec.describe AuthorsController, :type => :controller do
 
       it "sets the failure flash message" do
         put :update, author: Fabricate.attributes_for(:author, first_name: nil), id: john.id
-        expect(flash[:danger]).to eq("Author has not been updated")
+        expect(flash.now[:danger]).to eq("Author has not been updated")
       end
     end
   end

@@ -43,7 +43,7 @@ RSpec.describe SessionsController, type: :controller do
     context 'unsuccessful sign in' do
       it 'set the flash danger message' do
         post :create, email: user.email, password: 'mypassword'
-        expect(flash[:danger]).to be_present
+        expect(flash.now[:danger]).to be_present
       end
     end
   end

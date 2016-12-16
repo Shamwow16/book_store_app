@@ -18,7 +18,7 @@ class PublishersController < ApplicationController
       flash[:success] = "A publisher was created"
       redirect_to @publisher
     else
-      flash[:danger] = "Publisher was not created."
+      flash.now[:danger] = "Publisher was not created."
       render :new
     end
   end

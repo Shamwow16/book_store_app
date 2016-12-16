@@ -43,7 +43,7 @@ RSpec.describe UsersController do
 
       it 'sets the failure flash message' do
         post :create, user: Fabricate.attributes_for(:user, first_name: nil)
-        expect(flash[:danger]).to eq('User has not been created')
+        expect(flash.now[:danger]).to eq('User has not been created')
       end
     end
   end

@@ -47,7 +47,7 @@ RSpec.describe PublishersController, :type => :controller do
         expect(Publisher.count).to eq(0)
       end
 
-      it {should set_flash[:danger]}
+      it {should set_flash.now[:danger]}
     end
   end
 
@@ -93,7 +93,7 @@ RSpec.describe PublishersController, :type => :controller do
 
       it "should set a danger flash" do
         put :update, publisher: Fabricate.attributes_for(:publisher, name: nil), id: harper.id
-        expect(flash[:danger]).to eq("Publisher was not updated")
+        expect(flash.now[:danger]).to eq("Publisher was not updated")
       end
     end
   end

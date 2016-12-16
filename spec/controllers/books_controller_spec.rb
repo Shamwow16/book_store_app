@@ -91,7 +91,7 @@ RSpec.describe BooksController, :type => :controller do
 
       it "sets the failure flash message" do
 
-        expect(flash[:danger]).to eq('Book has not been created')
+        expect(flash.now[:danger]).to eq('Book has not been created')
 
       end
 
@@ -163,7 +163,7 @@ RSpec.describe BooksController, :type => :controller do
 
       it "sets the failure flash message" do
 
-        expect(flash[:danger]).to eq('Book has not been updated')
+        expect(flash.now[:danger]).to eq('Book has not been updated')
 
       end
 

@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       flash[:success] = 'User has been created'
       redirect_to @user
     else
-      flash[:danger] = 'User has not been created'
+      flash.now[:danger] = 'User has not been created'
 
       render :new
     end
