@@ -65,7 +65,6 @@ RSpec.describe AuthorsController, type: :controller do
     context 'successful create' do
       it 'saves the new author object' do
         post :create, author: Fabricate.attributes_for(:author)
-
         expect(Author.count).to eq(1)
       end
 
