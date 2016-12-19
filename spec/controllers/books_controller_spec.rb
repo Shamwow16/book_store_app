@@ -1,29 +1,57 @@
 require 'rails_helper'
+require 'support/macros'
+require 'support/shared_examples'
 
 RSpec.describe BooksController, :type => :controller do
+  let(:admin) { Fabricate(:admin) }
+  let(:user) { Fabricate(:user) }
 
-  describe "GET #index" do
+  before { set_current_admin admin }
 
-    it "returns a successful http request status code" do
 
-      get :index
-
-      expect(response).to have_http_status(:success)
-
+  describe 'GET #index' do
+    context 'guest users' do
+      it_behaves_like 'requires sign in' do
+        let(:action) { get :index }
+      end
     end
 
+    context 'non-admin users' do
+      it_behaves_like 'requires admin' do
+        let(:action) { get :index }
+      end
+    end
+
+    context 'admin users' do
+      it 'returns a successful http request status code' do
+        get :index
+        expect(response).to have_http_status(:success)
+      end
+    end
   end
 
   describe "GET #show" do
+    let(:book) { Fabricate.create(:book) }
+    before { clear_current_user }
 
-    it "returns a successful http request status code" do
+    context 'guest users' do
+      it_behaves_like 'requires sign in' do
+        let(:action) { get :show, id: book.id }
+      end
+    end
 
-      book = Fabricate(:book)
+    context 'non-admin users' do
+      it_behaves_like 'requires admin' do
+        let(:action) { get :show, id: book.id }
+      end
+    end
 
-      get :show, id: book
-
-      expect(response).to have_http_status(:success)
-
+    context 'admin users' do
+      before { set_current_admin admin }
+      it 'returns a successful http request status code' do
+        get :show, id: book.id
+        expect(response).to have_http_status(:success)
+      end
     end
 
   end
